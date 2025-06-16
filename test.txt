@@ -1,0 +1,36 @@
+قبل كل شيء للمعلومة ان هذه المنصة لسوريا
+اولا - جدول users
+-- Users table
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    role ENUM('admin', 'garage_admin', 'employee', 'customer') NOT NULL,
+    isActive BOOLEAN DEFAULT TRUE,
+    last_login TIMESTAMP NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+الوظائف:
+- يقوم بانشاء حساب عادي جدا دون تحديد ال role افتراضيا يكون customer
+- يقوم admin فقط بانشاء حساب لمدير الكراج 
+- يقوم garage_admin فقط بانشاء حساب للموظفين الخاصين به
+- يمكن لل cusomer عرض بيانات حسابه فقط مع التعديل والحذف
+- يمكن لل admin عرض جميع الحسابات مع امكانية حذف، تعديل ، تفعيل وتعطيل
+- يمكن لل garage_admin عرض حسابه وحسابات موظفيه فقط مع امكانية التعديل، الحذف ، التفعيل والتعطيل
+- يمكن لل employee عرض حسابه فقط
+- وطبعا وظيفة تسجيل الدخول مع تحديث last_login 
+-إرسال إشعار ترحيبي وبريد إلكتروني عند التسجيل.
+-التحقق من تنسيق email و phone.
+- تشفير كلمة المرور باستخدام bcrypt
+- منع تكرار ال email
+ملاحظة : اريدك ان تقوم بكتابة الاكواد للواجهة الخلفية بما فيها (model, controller , route , utils, ...etc ) 
+وان تصمم واجهة لها للواجهة الامامية ( علما انني قمت بانشاء react/vite وقمت بربطه مسبقا مع tailwind ) حتى تقوم انت فقط بكتابة ال ( components, pages, utils api connection ) 
+هل الى الان المتطلبات واضحة ؟
+اخبرني ماذا ستفعل قبل البدء وعند التاكيد قم بالبدء
+هيا يا رائع انت
+
+-----------------------------------------------------------------------------------------------------------------
