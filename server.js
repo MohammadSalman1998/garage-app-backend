@@ -21,9 +21,9 @@ app.use(cors('*'));
 app.use(express.json());
 
 // Routes
-app.use('/',(req,res)=>{
-  res.write('Welcome')
-})
+app.get('/', (req, res) => {
+  res.status(200).send('Welcome to my Node.js API on Vercel!');
+});
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/garages', garageRoutes);
